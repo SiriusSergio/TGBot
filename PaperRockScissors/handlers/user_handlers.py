@@ -22,3 +22,11 @@ async def start_command(message: Message):
 @router.message(Command(commands="/help"))
 async def help_command(message: Message):
     await message.answer(text=LEXICON_RU["/help"])
+
+
+# any text message handler
+@router.message()
+async def plain_text(message: Message):
+    await message.answer(
+        text="Я умею только играть 🙃" \
+        "Сыграем? -")
