@@ -10,7 +10,4 @@ router = Router()
 # any text message handler
 @router.message()
 async def plain_text(message: Message):
-    await message.answer(
-        text=LEXICON_RU["other_message"]
-        )
-    
+    await message.answer(text=LEXICON_RU["other_message"])

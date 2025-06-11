@@ -2,10 +2,11 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from config_data.config import Config, load_config
 from handlers import user_handlers
-from handlers import other_handlers 
+from handlers import other_handlers
 
 # init logger
 logger = logging.getLogger(__name__)
@@ -16,8 +17,8 @@ async def main():
     # congig logging
     logging.basicConfig(
         level=logging.DEBUG,
-        format='%(filename)s:%(lineno)d #%(levelname)-8s '
-               '[%(asctime)s] - %(name)s - %(message)s'
+        format="%(filename)s:%(lineno)d #%(levelname)-8s "
+        "[%(asctime)s] - %(name)s - %(message)s",
     )
 
     # output to console about start of the bot
@@ -28,7 +29,8 @@ async def main():
 
     # init bot and dispatcher
     bot = Bot(
-        token=config.tg_bot.token
+        token=config.tg_bot.token,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
     dp = Dispatcher()
 
