@@ -1,14 +1,14 @@
 import random
-
+from lexicon.lexicon import LEXICON_RU
 
 # options to choose in the game 
 rps_options = ["Камень", "Ножницы", "Бумага"]
 
 # dict with rules of the game
 rules: dict = {
-    "Камень": "Ножницы",
-    "Ножницы": "Бумага",
-    "Бумага": "Камень"
+    LEXICON_RU["rock"]: LEXICON_RU["scissors"],
+    LEXICON_RU["scissors"]: LEXICON_RU["paper"],
+    LEXICON_RU["paper"]: LEXICON_RU["rock"]
 }
 
 # function that generates option made by bot 

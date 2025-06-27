@@ -1,5 +1,5 @@
 from typing import Any
-from aiogram import Router
+from aiogram import F, Router
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart, Filter
 from keyboards.main_menu_keyboard import start_keyboard
@@ -39,4 +39,8 @@ async def start_game(message: Message):
         user_states.start_game(message.from_user.id)
 
 
-# @router.message.filter()
+@router.message(F.text.in_([LEXICON_RU["rock"],LEXICON_RU["paper"], LEXICON_RU["scissors"]]))
+async def rock_handler(message: Message):
+    await message.answer(text=f"Ты выбрал {message.text}")
+    winner = decide_winner(message.text)
+    await message.answer(text=)
